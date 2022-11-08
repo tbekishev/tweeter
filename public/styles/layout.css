@@ -15,6 +15,7 @@ html {
  */
 
 body {
+  font-family: Source Sans Pro;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
@@ -23,3 +24,58 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+ main {
+  width: 90%;
+  margin: auto;
+  background-color: #f4f1ec;
+  
+ }
+
+ .tweet {
+  border-top: solid;
+  border-right: solid;
+  border-left: solid;
+  border-bottom: solid;
+ }
+
+ footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  font-size: small;
+  border-top: solid;  
+  margin-left: 10px;
+  margin-right: 10px;
+  align-items: center;
+ }
+
+ p.text {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+ }
+
+ .tweet:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+ }
+
+ .fa-flag:hover {
+  color: yellow;
+}
+
+.fa-retweet:hover {
+  color: yellow;
+}
+
+.fa-heart:hover {
+  color: yellow;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+}
+i {
+  padding: 1em;
+}

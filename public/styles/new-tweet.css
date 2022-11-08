@@ -1,0 +1,35 @@
+form {
+  margin: auto;
+  
+}
+
+button {
+  background-color: #4056a1;
+  color: #FFFFFF;
+  font-family: Bungee;
+}
+output {
+  font-family: Bungee;
+  align-items: right;
+}
+
+div {
+  display: flex;
+  justify-content: space-between;
+}
+#tweet-text {
+  border-bottom: solid;
+  background-color: inherit;
+  border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  height: 60px;
+  width: 100%;
+  overflow: auto;
+  resize: none;
+  outline: none;
+}
+
+label {
+  font-weight: bolder;
+}
