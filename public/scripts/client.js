@@ -5,8 +5,6 @@
 */
 
 $(document).ready(function() {
-  $("#error").hide();
-  $("#error2").hide();
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
@@ -42,18 +40,26 @@ const renderTweets = function(tweets) {
   });
 }
 
-  function loadtweets() {
-    $.ajax({
-      type: "GET",
-      url: "/tweets/",
-      data: "data",
-      success: function (response) {
+function loadtweets() {
+  $.ajax({
+    type: "GET",
+    url: "/tweets/",
+    data: "data",
+    success: function (response) {
+      
+      renderTweets(response);
+    }
+  });
+}
 
-        renderTweets(response);
-      }
-    });
-  }
   loadtweets();
+  $("#error").hide();
+  $("#error2").hide();
+  $(".new-tweet").hide();
+
+  $("span").on('click', () => {
+    $(".new-tweet").slideToggle();
+  })
 
   $("#tweet-text").on('focus', () => {
     $("#error").slideUp();

@@ -37,6 +37,7 @@ body {
   border-left: solid;
   border-bottom: solid;
   margin-bottom: 1em;
+  margin-top: 1em;
  }
 
  footer {
@@ -100,4 +101,8 @@ article {
 
 #error2 {
   color: red;
+}
+
+span:hover {
+  cursor: pointer;
 }
