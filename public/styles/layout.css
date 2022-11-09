@@ -76,6 +76,15 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
 i {
-  padding: 1em;
+  padding: 0.5em;
+}
+
+.user p{
+  padding-left: 1em;
+}
+
+.user {
+  align-items: center;
 }
