@@ -106,3 +106,31 @@ article {
 span:hover {
   cursor: pointer;
 }
+
+#scrollTop {
+  background-color: #ff0000;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  text-align: center;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+}
+#scrollTop::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-size: 2em;
+  line-height: 60px;
+  color: #fff;
+}
+#scrollTop.show {
+  opacity: 1;
+  visibility: visible;
+}

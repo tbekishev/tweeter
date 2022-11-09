@@ -5,6 +5,7 @@
 */
 
 $(document).ready(function() {
+
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
@@ -51,11 +52,23 @@ function loadtweets() {
     }
   });
 }
-
+  const toTop = $("#scrollTop");
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 400) {
+      toTop.addClass('show');
+    } else {
+      toTop.removeClass('show');
+    }
+  });
   loadtweets();
   $("#error").hide();
   $("#error2").hide();
   $(".new-tweet").hide();
+
+  toTop.on('click', function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop:0}, '400');
+  });
 
   $("span").on('click', () => {
     $(".new-tweet").slideToggle();
