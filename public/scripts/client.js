@@ -5,14 +5,22 @@
 */
 
 $(document).ready(function() {
+
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
 function createTweetElement(data) {
+  const safeHTML = `<p>${escape(data.content.text)}</p>`;
   let $tweet = `
   <form class = "oldTweets"> 
   <header>
   <div class="user"><img src="${data.user.avatars}"> <p>${data.user.name}</p></div>  ${data.user.handle}
   </header><br>
   <article>
-  <p class="text">${data.content.text}</p>
+  <p class="text">${safeHTML}</p>
   </article>
   <footer>
   <p>${timeago.format(data.created_at)}</p>
