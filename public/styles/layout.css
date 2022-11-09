@@ -73,6 +73,10 @@ body {
 .fa-heart:hover {
   color: yellow;
 }
+.fa-angles-down:hover {
+  color: #ff0000;
+  cursor: pointer;
+}
 
 .icons {
   display: flex;
