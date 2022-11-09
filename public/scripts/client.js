@@ -5,7 +5,8 @@
 */
 
 $(document).ready(function() {
-
+  $("#error").hide();
+  $("#error2").hide();
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
@@ -54,14 +55,19 @@ const renderTweets = function(tweets) {
   }
   loadtweets();
 
+  $("#tweet-text").on('focus', () => {
+    $("#error").slideUp();
+    $("#error2").slideUp();
+  });
+
   $("#newTweet").on("submit", function(event) {
     event.preventDefault();
     if (!$("#tweet-text").val() || $("#tweet-text").val() === 'null' || $("#tweet-text").val() === '') {
-      alert('The tweet cannot be empty!')
+      $("#error2").slideDown();
       return;
     }
     if ($("#tweet-text").val().length > 140) {
-      alert('The tweet cannot exceed 140 symbols!');
+      $("#error").slideDown();
       return;
     }
     $.ajax({
