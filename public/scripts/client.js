@@ -1,12 +1,13 @@
 /*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+* Client-side JS logic goes here
+* jQuery is already loaded
+* Reminder: Use (and do all your DOM work in) jQuery's document ready function
+*/
 
+$(document).ready(function() {
 function createTweetElement(data) {
   let $tweet = `
-  <form class = "tweet"> 
+  <form class = "oldTweets"> 
   <header>
   <div class="user"><img src="${data.user.avatars}"> <p>${data.user.name}</p></div>  ${data.user.handle}
   </header><br>
@@ -21,38 +22,49 @@ function createTweetElement(data) {
   <i class="fa-solid fa-heart"></i>
   </div>
   </footer>
-  </form>
-  <br>`;
+  </form>`;
   return $tweet;
 }
 
 const renderTweets = function(tweets) {
-  tweets.forEach(element => {
+  const reversedTweets = tweets.reverse();
+  reversedTweets.forEach(element => {
     $("main").append(createTweetElement(element));
   });
 }
 
-$(document).ready(function() {
   function loadtweets() {
     $.ajax({
       type: "GET",
       url: "/tweets/",
       data: "data",
       success: function (response) {
+
         renderTweets(response);
       }
     });
   }
   loadtweets();
-  //renderTweets(data);
+
   $("#newTweet").on("submit", function(event) {
+    event.preventDefault();
+    if (!$("#tweet-text").val() || $("#tweet-text").val() === 'null' || $("#tweet-text").val() === '') {
+      alert('The tweet cannot be empty!')
+      return;
+    }
+    if ($("#tweet-text").val().length > 140) {
+      alert('The tweet cannot exceed 140 symbols!');
+      return;
+    }
     $.ajax({
       type: "POST",
       url: "/tweets/",
       data: $(this).serialize(),
       success: function() { 
+        $(".oldTweets").remove();
+        loadtweets();
+        $("#tweet-text").val('');
       }
     });
-    event.preventDefault();
   })
 });

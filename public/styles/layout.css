@@ -16,7 +16,7 @@ html {
 
 body {
   font-family: Source Sans Pro;
-  color: #545149;
+  color: #20201f;
   background-color: #f4f1ec;
   font-size: 24px;
 }
@@ -31,11 +31,12 @@ body {
   
  }
 
- .tweet {
+ .oldTweets {
   border-top: solid;
   border-right: solid;
   border-left: solid;
   border-bottom: solid;
+  margin-bottom: 1em;
  }
 
  footer {
