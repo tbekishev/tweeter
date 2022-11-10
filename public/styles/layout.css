@@ -137,7 +137,7 @@ span:hover {
   opacity: 1;
   visibility: visible;
 }
-
+/*Responsive Design for tablet and Desktop*/
   @media only screen and (min-width: 768px) {
     #img {
       background-color: rgb(89, 118, 245);
