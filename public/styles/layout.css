@@ -63,18 +63,17 @@ body {
  }
 
  .fa-flag:hover {
-  color: yellow;
+  color: #4056a1;
 }
 
 .fa-retweet:hover {
-  color: yellow;
+  color: #4056a1;
 }
 
 .fa-heart:hover {
-  color: yellow;
+  color: #4056a1;
 }
-.fa-angles-down:hover {
-  color: #ff0000;
+.fa-angles-down {
   cursor: pointer;
 }
 
@@ -112,7 +111,7 @@ span:hover {
 }
 
 #scrollTop {
-  background-color: #ff0000;
+  background-color: #4056a1;
   display: inline-block;
   height: 60px;
   width: 60px;
@@ -138,3 +137,27 @@ span:hover {
   opacity: 1;
   visibility: visible;
 }
+
+  @media only screen and (min-width: 768px) {
+    #img {
+      background-color: rgb(89, 118, 245);
+    }
+    body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    nav {
+      height: auto;
+      margin-top: 0;
+    }
+
+    main {
+      margin-top: 105px;
+    }
+
+    header {
+      margin-right: 5px;      
+    }
+  }
