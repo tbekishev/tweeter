@@ -1,3 +1,5 @@
+//toTop button appear and disappear
+
 $(document).ready(function() {
 const toTop = $("#scrollTop");
   $(window).scroll(function() {
@@ -8,6 +10,7 @@ const toTop = $("#scrollTop");
     }
   });
 
+//toTop button click
 toTop.on('click', function(event) {
   event.preventDefault();
   $('html, body').animate({scrollTop:0}, '200');

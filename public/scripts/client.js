@@ -5,13 +5,16 @@
 */
 
 $(document).ready(function() {
+//-------------Functions----------------------//
 
+//preventing the code injection in the textarea
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
+  //new tweet form function
 function createTweetElement(data) {
   const safeHTML = `<p>${escape(data.content.text)}</p>`;
   let $tweet = `
@@ -34,6 +37,7 @@ function createTweetElement(data) {
   return $tweet;
 }
 
+//new tweet rendering function
 const renderTweets = function(tweets) {
   const reversedTweets = tweets.reverse();
   reversedTweets.forEach(element => {
@@ -41,6 +45,7 @@ const renderTweets = function(tweets) {
   });
 }
 
+//loading old tweets
 function loadtweets() {
   $.ajax({
     type: "GET",
@@ -52,12 +57,15 @@ function loadtweets() {
     }
   });
 }
-  
-  loadtweets();
+  //----------page loading-----------//
+  loadtweets();  
   $("#error").hide();
   $("#error2").hide();
   $(".new-tweet").hide();
 
+  //----------event listeners----------//
+
+  
   $("span").on('click', () => {
     $(".new-tweet").slideToggle();
   })
