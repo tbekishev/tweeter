@@ -7,58 +7,71 @@
 $(document).ready(function() {
 //-------------Functions----------------------//
 
-//preventing the code injection in the textarea
-  const escape = function (str) {
+  //preventing the code injection in the textarea
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
   //new tweet form function
-function createTweetElement(data) {
-  const safeHTML = `<p>${escape(data.content.text)}</p>`;
-  let $tweet = `
-  <form class = "oldTweets"> 
-  <header>
-  <div class="user"><img src="${data.user.avatars}"> <p>${data.user.name}</p></div>  ${data.user.handle}
-  </header><br>
-  <article>
-  <p class="text">${safeHTML}</p>
-  </article>
-  <footer>
-  <p>${timeago.format(data.created_at)}</p>
-  <div class="icons">
-  <i class="fa-solid fa-flag"></i>
-  <i class="fa-solid fa-retweet"></i>
-  <i class="fa-solid fa-heart"></i>
-  </div>
-  </footer>
+  function createTweetElement(data) {
+    const safeHTML = `<p>${escape(data.content.text)}</p>`;
+    let $tweet = `
+  <form class = "postTweet"> 
+
+    <header>
+
+      <div class="user"><img src="${data.user.avatars}"> <p>${data.user.name}</p></div>  ${data.user.handle}
+
+    </header><br>
+
+    <article>
+
+      <p class="text">${safeHTML}</p>
+
+    </article>
+
+    <footer>
+
+      <p>${timeago.format(data.created_at)}</p>
+
+      <div class="icons">
+
+        <i class="fa-solid fa-flag"></i>
+        <i class="fa-solid fa-retweet"></i>
+        <i class="fa-solid fa-heart"></i>
+
+      </div>
+
+    </footer>
+
   </form>`;
-  return $tweet;
-}
+    return $tweet;
+  }
 
-//new tweet rendering function
-const renderTweets = function(tweets) {
-  const reversedTweets = tweets.reverse();
-  reversedTweets.forEach(element => {
-    $("main").append(createTweetElement(element));
-  });
-}
+  //new tweet rendering function
+  const renderTweets = function(tweets) {
+    const reversedTweets = tweets.reverse();
+    reversedTweets.forEach(element => {
+      $("main").append(createTweetElement(element));
+    });
+  };
 
-//loading old tweets
-function loadtweets() {
-  $.ajax({
-    type: "GET",
-    url: "/tweets/",
-    data: "data",
-    success: function (response) {
+  //loading old tweets
+  function loadtweets() {
+    $.ajax({
+      type: "GET",
+      url: "/tweets/",
+      data: "data",
+      success: function(response) {
       
-      renderTweets(response);
-    }
-  });
-}
+        renderTweets(response);
+      }
+    });
+  }
   //----------page loading-----------//
-  loadtweets();  
+  loadtweets();
   $("#error").hide();
   $("#error2").hide();
   $(".new-tweet").hide();
@@ -68,11 +81,11 @@ function loadtweets() {
   
   $("span").on('click', () => {
     $(".new-tweet").slideToggle();
-  })
+  });
 
   $(".fa-angles-down").on('click', () => {
     $(".new-tweet").slideToggle();
-  })
+  });
 
   $("#tweet-text").on('focus', () => {
     $("#error").slideUp();
@@ -93,11 +106,12 @@ function loadtweets() {
       type: "POST",
       url: "/tweets/",
       data: $(this).serialize(),
-      success: function() { 
-        $(".oldTweets").remove();
+      success: function() {
+        $("output").text(140);
+        $(".postTweet").remove();
         loadtweets();
         $("#tweet-text").val('');
       }
     });
-  })
+  });
 });
