@@ -5,7 +5,7 @@ This projects is AJAX based single-page Twitter clone that uses jQuery, HTML5, C
 ## Tweeter features:
 - prevents code injection;
 - responsive design;
-- buil-in on top button;
+- built-in on top button;
 - finally it can tweet, of course in a local JSON file.
 
 ## Desktop Tweeter
