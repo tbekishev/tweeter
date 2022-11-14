@@ -58,9 +58,9 @@ body {
   padding-right: 1.5em;
  }
 
- .tweet:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2); 
- }
+ .postTweet:hover {
+  box-shadow: 0 11px 11px rgba(33,33,33,.2); 
+}
 
  .fa-flag:hover {
   color: #4056a1;
