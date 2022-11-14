@@ -52,26 +52,35 @@ $(document).ready(function() {
 
   //new tweet rendering function
   const renderTweets = function(tweets) {
-    const reversedTweets = tweets.reverse();
-    reversedTweets.forEach(element => {
-      $("main").append(createTweetElement(element));
+    tweets.forEach(element => {
+      $("#addTweet").prepend(createTweetElement(element));
     });
   };
 
   //loading old tweets
-  function loadtweets() {
+  function loadTweets() {
     $.ajax({
       type: "GET",
       url: "/tweets/",
       data: "data",
-      success: function(response) {
-      
+      success: function(response) {      
         renderTweets(response);
       }
     });
   }
+  function addTweet() {
+    $.ajax({
+      type: "GET",
+      url: "/tweets/",
+      data: "data",
+      success: function(response) {     
+        const data = response[response.length - 1] 
+        $("#addTweet").prepend(createTweetElement(data));
+      }
+    });
+  }
   //----------page loading-----------//
-  loadtweets();
+  loadTweets();
   $("#error").hide();
   $("#error2").hide();
   $(".new-tweet").hide();
@@ -108,8 +117,7 @@ $(document).ready(function() {
       data: $(this).serialize(),
       success: function() {
         $("output").text(140);
-        $(".postTweet").remove();
-        loadtweets();
+        addTweet();
         $("#tweet-text").val('');
       }
     });
